@@ -1,9 +1,8 @@
-import createFetch from '@vercel/fetch';
 import puppeteer from 'puppeteer';
 
-import type { VercelApiHandler } from '@vercel/node';
+import postSlackMessage from '../../utils/postSlackMessage';
 
-const fetch = createFetch();
+import type { VercelApiHandler } from '@vercel/node';
 
 const PAGE_URL =
 	'https://www.gravevault.jp/index.php?dispatch=products.view&product_id=764';
@@ -24,17 +23,6 @@ const scraping = async () => {
 		throw new Error('value is falsy');
 	}
 	return value;
-};
-
-const postSlackMessage = async (data: { text: string }) => {
-	const res = await fetch(process.env.SLACK_WEBHOOK_URL!, {
-		headers: {
-			'Content-Type': 'application/json; charset=utf-8',
-		},
-		method: 'POST',
-		body: JSON.stringify(data),
-	});
-	return res;
 };
 
 type TimeoutError = {
