@@ -34,6 +34,12 @@
 	"pnpm": {
 		"overrides": {
 			"typescript": "^4.9.5"
+		},
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"node-fetch",
+				"@types/node-fetch"
+			]
 		}
 	}
 }
