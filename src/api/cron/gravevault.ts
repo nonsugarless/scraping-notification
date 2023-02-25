@@ -41,7 +41,7 @@ const handler: VercelApiHandler = async (_req, res) => {
 				await postSlackMessage({
 					text: 'スクレイピングで予期せぬエラーが発生しました😢',
 				});
-				res.status(200);
+				res.status(400).json({ error });
 			}
 		});
 		const hasStock = typeof text === 'string' && !text.includes('在庫がありません');
