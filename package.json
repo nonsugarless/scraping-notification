@@ -1,0 +1,38 @@
+{
+	"name": "scraping",
+	"version": "0.0.0",
+	"description": "",
+	"scripts": {
+		"start": "vercel dev --listen 4100",
+		"dev": "pnpm start",
+		"lint": "eslint .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nonsugarless/scraping.git"
+	},
+	"author": "nonsugarless",
+	"dependencies": {
+		"@vercel/fetch": "^6.2.0",
+		"puppeteer": "^19.7.2"
+	},
+	"devDependencies": {
+		"@nonsugarless/eslint-plugin": "^0.4.1",
+		"@nonsugarless/prettier-config": "^0.2.5",
+		"@nonsugarless/typescript-configs": "^0.2.4",
+		"@types/node": "^18.14.0",
+		"@typescript-eslint/parser": "^5.53.0",
+		"@vercel/node": "^2.9.7",
+		"eslint": "^8.34.0",
+		"prettier": "^2.8.4",
+		"typescript": "^4.9.5",
+		"vercel": "^28.16.5"
+	},
+	"prettier": "@nonsugarless/prettier-config",
+	"pnpm": {
+		"overrides": {
+			"typescript": "^4.9.5"
+		}
+	}
+}
