@@ -30,7 +30,7 @@
 		"vercel": "^28.16.5"
 	},
 	"prettier": "@nonsugarless/prettier-config",
-	"packageManager": "pnpm@7.27.1",
+	"packageManager": "pnpm@7.28.0",
 	"pnpm": {
 		"overrides": {
 			"typescript": "^4.9.5"
