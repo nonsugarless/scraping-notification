@@ -7,9 +7,6 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"baseUrl": ".",
-		"paths": {
-			"@/lib/*": ["lib/*"]
-		},
 		"lib": ["esnext", "DOM", "DOM.Iterable"],
 		"allowJs": true,
 		"noEmit": true,
