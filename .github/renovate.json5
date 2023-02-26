@@ -1,0 +1,10 @@
+{
+	$schema: 'https://docs.renovatebot.com/renovate-schema.json',
+	extends: ['config:base', ':preserveSemverRanges', ':timezone(Asia/Tokyo)'],
+	schedule: ['after 2am on Saturday', 'before 6am on Saturday'],
+	automerge: true,
+	major: {
+		automerge: false,
+	},
+	dependencyDashboard: true,
+}
