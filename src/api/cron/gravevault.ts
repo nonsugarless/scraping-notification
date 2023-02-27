@@ -44,7 +44,10 @@ const handler: VercelApiHandler = async (_req, res) => {
 				res.status(400).json({ error }).end();
 			}
 		});
-		const hasStock = typeof text === 'string' && !text.includes('在庫がありません');
+		if (typeof text !== 'string') {
+			return;
+		}
+		const hasStock = !text.includes('在庫がありません');
 		const baseData = {
 			text,
 			hasStock,
