@@ -15,9 +15,7 @@
 	"author": "nonsugarless",
 	"dependencies": {
 		"@vercel/fetch": "^6.2.0",
-		"chrome-aws-lambda": "^10.1.0",
-		"jsdom": "^21.1.0",
-		"puppeteer-core": "^19.7.2"
+		"jsdom": "^21.1.0"
 	},
 	"devDependencies": {
 		"@nonsugarless/eslint-plugin": "^0.4.1",
