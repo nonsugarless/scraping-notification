@@ -19,7 +19,8 @@
 			{
 				"name": "next"
 			}
-		]
+		],
+		"sourceMap": true
 	},
 	"include": ["**/*.ts"],
 	"exclude": ["node_modules"]
