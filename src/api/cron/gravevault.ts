@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer';
+import chrome from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer-core';
 
 import postSlackMessage from '../../utils/postSlackMessage';
 
@@ -9,8 +10,18 @@ const PAGE_URL =
 const SELECTOR = '#out_of_stock_info_2934680252';
 const SLACK_MESSAGE_TAG = '`Gravevault`';
 
+const LOCAL_CHROME_EXEC_PATH =
+	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const isLocal = process.env.VERCEL_URL?.includes('localhost');
+
 const scraping = async () => {
-	const browser = await puppeteer.launch({ headless: false });
+	const browser = await puppeteer.launch({
+		args: chrome.args,
+		executablePath: isLocal ? LOCAL_CHROME_EXEC_PATH : await chrome.executablePath,
+		headless: chrome.headless,
+	});
+
 	const page = await browser.newPage();
 	await page.goto(PAGE_URL);
 	const selector = await page.waitForSelector(SELECTOR, {
@@ -36,12 +47,12 @@ const handler: VercelApiHandler = async (_req, res) => {
 				await postSlackMessage({
 					text: 'スクレイピングがtimeoutしました⚠️\nselectorにマッチする要素がないかもしれません🥲',
 				});
-				res.status(200).end();
+				res.status(200);
 			} else {
 				await postSlackMessage({
 					text: 'スクレイピングで予期せぬエラーが発生しました😢',
 				});
-				res.status(400).json({ error }).end();
+				res.status(400).json({ error });
 			}
 		});
 		if (typeof text !== 'string') {
