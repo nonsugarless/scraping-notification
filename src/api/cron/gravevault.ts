@@ -1,5 +1,4 @@
-import chrome from 'chrome-aws-lambda';
-import puppeteer from 'puppeteer-core';
+import { JSDOM } from 'jsdom';
 
 import postSlackMessage from '../../utils/postSlackMessage';
 
@@ -7,29 +6,14 @@ import type { VercelApiHandler } from '@vercel/node';
 
 const PAGE_URL =
 	'https://www.gravevault.jp/index.php?dispatch=products.view&product_id=764';
-const SELECTOR = '#out_of_stock_info_2934680252';
+const TARGET_EL_ID = 'out_of_stock_info_2934680252';
 const SLACK_MESSAGE_TAG = '`Gravevault`';
 
-const LOCAL_CHROME_EXEC_PATH =
-	'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-
-const isLocal = process.env.VERCEL_URL?.includes('localhost');
-
 const scraping = async () => {
-	const browser = await puppeteer.launch({
-		args: chrome.args,
-		executablePath: isLocal ? LOCAL_CHROME_EXEC_PATH : await chrome.executablePath,
-		headless: chrome.headless,
-	});
+	const dom = await JSDOM.fromURL(PAGE_URL, {});
+	const document = dom.window.document;
+	const value = document.getElementById(TARGET_EL_ID)?.textContent;
 
-	const page = await browser.newPage();
-	await page.goto(PAGE_URL);
-	const selector = await page.waitForSelector(SELECTOR, {
-		timeout: 300,
-	});
-	const textContent = await selector?.getProperty('textContent');
-	const value = await textContent?.jsonValue();
-	await browser.close();
 	if (!value) {
 		throw new Error('value is falsy');
 	}
@@ -49,16 +33,17 @@ const handler: VercelApiHandler = async (_req, res) => {
 				});
 				res.status(200);
 			} else {
+				const message = 'スクレイピングで予期せぬエラーが発生しました😢';
 				await postSlackMessage({
-					text: 'スクレイピングで予期せぬエラーが発生しました😢',
+					text: message,
 				});
-				res.status(400).json({ error });
+				res.status(400).json({ message, ...error });
 			}
 		});
 		if (typeof text !== 'string') {
 			return;
 		}
-		const hasStock = !text.includes('在庫がありません');
+		const hasStock = !text.includes('No products');
 		const baseData = {
 			text,
 			hasStock,
