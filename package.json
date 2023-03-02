@@ -1,7 +1,7 @@
 {
-	"name": "scraping",
-	"version": "0.0.0",
-	"description": "",
+	"name": "scraping-notification",
+	"version": "1.0.0",
+	"description": "Post the scraping results on slack with cron jobs.",
 	"scripts": {
 		"start": "vercel dev --listen 4100",
 		"dev": "pnpm start",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/nonsugarless/scraping.git"
+		"url": "git+https://github.com/nonsugarless/scraping-notification.git"
 	},
 	"author": "nonsugarless",
 	"dependencies": {
