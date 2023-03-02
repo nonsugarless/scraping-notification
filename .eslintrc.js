@@ -2,9 +2,9 @@
 /** @type {import('@typescript-eslint/experimental-utils').TSESLint.Linter.Config} */
 const config = {
 	extends: [
-		'plugin:@nonsugarless/core',
-		'plugin:@nonsugarless/typescript',
-		'plugin:@nonsugarless/prettier',
+		'plugin:@shopify/esnext',
+		'plugin:@shopify/typescript',
+		'plugin:@shopify/prettier',
 	],
 	root: true,
 	env: {
@@ -22,6 +22,9 @@ const config = {
 				caughtErrorsIgnorePattern: '^_',
 			},
 		],
+		'@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+		'@typescript-eslint/consistent-type-imports': ['warn'],
+		'@typescript-eslint/naming-convention': 'off',
 	},
 };
 module.exports = config;

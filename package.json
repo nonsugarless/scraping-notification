@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Post the scraping results on slack with cron jobs.",
 	"scripts": {
-		"start": "vercel dev --listen 4100",
+		"start": "vercel dev --listen 5005",
 		"dev": "pnpm start",
 		"lint": "eslint .",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -18,19 +18,17 @@
 		"jsdom": "^21.1.0"
 	},
 	"devDependencies": {
-		"@nonsugarless/eslint-plugin": "^0.4.1",
-		"@nonsugarless/prettier-config": "^0.2.5",
-		"@nonsugarless/typescript-configs": "^0.2.4",
+		"@shopify/eslint-plugin": "^42.0.3",
+		"@shopify/prettier-config": "^1.1.2",
+		"@shopify/typescript-configs": "^5.1.0",
 		"@types/jsdom": "^21.1.0",
 		"@types/node": "^18.14.0",
-		"@typescript-eslint/parser": "^5.53.0",
 		"@vercel/node": "^2.9.7",
 		"eslint": "^8.34.0",
 		"prettier": "^2.8.4",
 		"typescript": "^4.9.5",
 		"vercel": "^28.16.5"
 	},
-	"prettier": "@nonsugarless/prettier-config",
 	"packageManager": "pnpm@7.28.0",
 	"pnpm": {
 		"overrides": {
@@ -39,7 +37,8 @@
 		"peerDependencyRules": {
 			"ignoreMissing": [
 				"node-fetch",
-				"@types/node-fetch"
+				"@types/node-fetch",
+				"@babel/core"
 			]
 		}
 	}
