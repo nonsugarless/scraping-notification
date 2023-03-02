@@ -1,8 +1,7 @@
 import { JSDOM } from 'jsdom';
+import type { VercelApiHandler } from '@vercel/node';
 
 import postSlackMessage from '../../utils/postSlackMessage';
-
-import type { VercelApiHandler } from '@vercel/node';
 
 const PAGE_URL =
 	'https://www.gravevault.jp/index.php?dispatch=products.view&product_id=764';

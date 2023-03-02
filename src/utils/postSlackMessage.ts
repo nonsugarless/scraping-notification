@@ -1,9 +1,11 @@
+import { env } from 'process';
+
 import createFetch from '@vercel/fetch';
 
 const fetch = createFetch();
 
 const postSlackMessage = async (data: { text: string }) => {
-	const res = await fetch(process.env.SLACK_WEBHOOK_URL!, {
+	const res = await fetch(env.SLACK_WEBHOOK_URL!, {
 		headers: {
 			'Content-Type': 'application/json; charset=utf-8',
 		},
