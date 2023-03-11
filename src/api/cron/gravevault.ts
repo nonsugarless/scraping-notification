@@ -23,7 +23,7 @@ const scraping = async () => {
 const handleScrapingError = async (error: Error | UnexpectedDomError) => {
 	const text =
 		error instanceof UnexpectedDomError
-			? `ページのDOM構造が変わっているかもしれません😨\n${PAGE_URL}`
+			? `ページのDOM構造が変わっているかもしれません🤔\n${PAGE_URL}`
 			: `スクレイピング中に予期せぬエラーが発生しました😢\n以下のエラーを確認してください\n${createCodeBlock(
 					JSON.stringify(error),
 			  )}`;
