@@ -8,27 +8,36 @@ const PAGE_URL =
 const TARGET_EL_ID = 'out_of_stock_info_2934680252';
 const SLACK_MESSAGE_TAG = '`Gravevault`';
 
+class UnexpectedDomError extends Error {}
+
 const scraping = async () => {
 	const dom = await JSDOM.fromURL(PAGE_URL);
 	const document = dom.window.document;
 	const value = document.getElementById(TARGET_EL_ID)?.textContent;
-
 	if (!value) {
-		throw new Error('value is falsy');
+		throw new UnexpectedDomError();
 	}
 	return value;
 };
 
+const handleScrapingError = async (error: Error | UnexpectedDomError) => {
+	const text =
+		error instanceof UnexpectedDomError
+			? `ページのDOM構造が変わっているかもしれません😨\n${PAGE_URL}`
+			: `スクレイピング中に予期せぬエラーが発生しました😢\n以下のエラーを確認してください\n${createCodeBlock(
+					JSON.stringify(error),
+			  )}`;
+	await postSlackMessage({ text });
+};
+
 const handler: VercelApiHandler = async (_req, res) => {
 	try {
-		const text = await scraping().catch(async (error: Error) => {
-			const message =
-				'スクレイピング中に予期せぬエラーが発生しました😢\n以下のエラーを確認してください';
-			await postSlackMessage({
-				text: `${message}\n${createCodeBlock(JSON.stringify(error))}`,
-			});
-			res.status(400).json({ error });
-		});
+		const text = await scraping().catch(
+			async (error: Error | UnexpectedDomError) => {
+				await handleScrapingError(error);
+				res.status(400).json({ error });
+			},
+		);
 		if (typeof text !== 'string') {
 			return;
 		}
