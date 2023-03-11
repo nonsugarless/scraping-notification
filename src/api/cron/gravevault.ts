@@ -46,10 +46,15 @@ const handler: VercelApiHandler = async (_req, res) => {
 			text,
 			isOutOfStock,
 		};
+		if (isOutOfStock) {
+			res.status(200).json({
+				...baseData,
+			});
+			return;
+		}
+
 		const slackRes = await postSlackMessage({
-			text: isOutOfStock
-				? `${SLACK_MESSAGE_TAG} 在庫なし`
-				: `${SLACK_MESSAGE_TAG} 目当ての商品が入荷されているかもしれません🚚\n${PAGE_URL}`,
+			text: `${SLACK_MESSAGE_TAG} 目当ての商品が入荷されているかもしれません🚚\n${PAGE_URL}`,
 		});
 		res.status(200).json({
 			...baseData,
