@@ -29,7 +29,7 @@
 		"typescript": "^5.0.0",
 		"vercel": "^28.16.5"
 	},
-	"packageManager": "pnpm@8.7.1",
+	"packageManager": "pnpm@8.7.4",
 	"pnpm": {
 		"overrides": {
 			"typescript": "^4.9.5"
