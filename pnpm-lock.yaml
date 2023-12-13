@@ -18,7 +18,7 @@ dependencies:
 devDependencies:
   '@shopify/eslint-plugin':
     specifier: ^42.0.3
-    version: 42.0.3(eslint@8.34.0)(prettier@2.8.4)(typescript@4.9.5)
+    version: 42.0.3(eslint@8.34.0)(prettier@3.0.0)(typescript@4.9.5)
   '@shopify/prettier-config':
     specifier: ^1.1.2
     version: 1.1.2
@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^8.34.0
     version: 8.34.0
   prettier:
-    specifier: ^2.8.4
-    version: 2.8.4
+    specifier: ^3.0.0
+    version: 3.0.0
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -2030,7 +2030,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@shopify/eslint-plugin@42.0.3(eslint@8.34.0)(prettier@2.8.4)(typescript@4.9.5):
+  /@shopify/eslint-plugin@42.0.3(eslint@8.34.0)(prettier@3.0.0)(typescript@4.9.5):
     resolution: {integrity: sha512-Vve7bpv3qeiDSIViHx1v0oJ6jDSiwqFzUlJZXIcgU/AcQTMEVYHozhxnNO02XTVeN1CJS3hiMjq2ruZdBiKWPw==}
     peerDependencies:
       eslint: ^8.3.0
@@ -2051,7 +2051,7 @@ packages:
       eslint-plugin-jest-formatting: 3.1.0(eslint@8.34.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.34.0)
       eslint-plugin-node: 11.1.0(eslint@8.34.0)
-      eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.6.0)(eslint@8.34.0)(prettier@2.8.4)
+      eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.6.0)(eslint@8.34.0)(prettier@3.0.0)
       eslint-plugin-promise: 6.1.1(eslint@8.34.0)
       eslint-plugin-react: 7.32.2(eslint@8.34.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.34.0)
@@ -4339,7 +4339,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier@4.2.1(eslint-config-prettier@8.6.0)(eslint@8.34.0)(prettier@2.8.4):
+  /eslint-plugin-prettier@4.2.1(eslint-config-prettier@8.6.0)(eslint@8.34.0)(prettier@3.0.0):
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -4352,7 +4352,7 @@ packages:
     dependencies:
       eslint: 8.34.0
       eslint-config-prettier: 8.6.0(eslint@8.34.0)
-      prettier: 2.8.4
+      prettier: 3.0.0
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -7004,9 +7004,9 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
