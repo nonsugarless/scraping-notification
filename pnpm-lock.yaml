@@ -9,8 +9,8 @@ overrides:
 
 dependencies:
   '@vercel/fetch':
-    specifier: ^6.2.0
-    version: 6.2.0
+    specifier: ^7.0.0
+    version: 7.0.0
   jsdom:
     specifier: ^21.1.0
     version: 21.1.0
@@ -2527,8 +2527,8 @@ packages:
       - supports-color
     dev: false
 
-  /@vercel/fetch@6.2.0:
-    resolution: {integrity: sha512-MU+Mzh06NIAXxwdnyHmBFg+/lTKBbzDkCSNhAwWTFJ4rHuBc4pHc8E6XP+qnwqaWugjOBQgFfQCGDLnV820c9A==}
+  /@vercel/fetch@7.0.0:
+    resolution: {integrity: sha512-zxZCtiZ2ICoaXCELiCnJbZqWWoQOMpsTyvPJBvCyXRnyQjuZkcCoWTaubUulxdFKCrSeJOgugJ2UtsjbLUlj1w==}
     peerDependencies:
       '@types/node-fetch': ^2.6.1
       node-fetch: ^2.6.7
